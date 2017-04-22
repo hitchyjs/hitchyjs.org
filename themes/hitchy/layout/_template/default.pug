@@ -1,0 +1,9 @@
+extends ../_partial/document
+
+block title
+	= page.title + " | " + config.title
+
+block north
+	h1 #{ page.title }
+	nav#topmenu
+		include ../_partial/top-menu

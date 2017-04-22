@@ -1,0 +1,32 @@
+doctype html
+
+html(lang=config.language)
+	head
+		meta(charset="UTF-8")
+		base(href=config.url)
+
+		link(rel="stylesheet" href="https://code.cdn.mozilla.net/fonts/fira.css")
+		link(rel=stylesheet href="design/index.css")
+		script(type="javascript" src="js/fx.js")
+
+		title
+			block title
+				| #{config.title}
+	body
+		#wrapper
+			#north
+				.block
+					block north
+			#main
+				#core
+					.block
+						block core
+				#left
+					.block
+						block left
+				#right
+					.block
+						block right
+			#south
+				.block
+					block south
