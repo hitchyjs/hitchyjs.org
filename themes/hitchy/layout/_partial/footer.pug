@@ -1,0 +1,7 @@
+.copyright &copy; #{new Date().getFullYear()} #[a(href="http://cepharum.de" target="_blank") cepharum GmbH]
+= "\u00a0-\u00a0"
+nav.footer
+	include footer-menu.pug
+if page.updated
+	= "\u00a0-\u00a0"
+	.timestamp= __("footer.lastUpdatedLabel", page.updated.format( "LLL" ) )

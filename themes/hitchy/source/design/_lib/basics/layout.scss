@@ -1,21 +1,60 @@
-@mixin centerBlock() {
+@mixin centerBlock( $horizontal_padding: true, $width: $content_width ) {
 	position: relative;
 	box-sizing: border-box;
-	width: $content_width;
+	max-width: $width;
 	margin: auto;
+	@if $horizontal_padding {
+		padding-left: $gap_size;
+		padding-right: $gap_size;
+	}
 }
 
+
+body {
+	background: $dark_soft_color;
+	color: $background_color;
+}
 
 #north {
 	background: $main_color;
 	color: $background_color;
 }
 
-#north, #main, #south {
-	> .block {
-		@include centerBlock;
+#north, #core, #south {
+	> .center-block {
+		body:not(.home) & h1 {
+			@include font($scale: 2, $line_height: 1.5);
+			padding: $gap_size/2 0;
+		}
 	}
 }
 
+.center-block {
+	@include centerBlock;
+}
+
+#main {
+	background: $background_color;
+	color: $text_color;
+}
+
+#core article {
+	padding-top: $gap_size;
+	padding-bottom: 2*$gap_size;
+}
+
+body:not(.home) .boilerplate {
+	display: none;
+}
+
 @media screen and (min-width:980px) {
+	#main {
+		min-height: 60vh;
+	}
+}
+
+@media screen and (min-width:1320px) {
+	body:not(.home) .boilerplate {
+		display: block;
+	}
 }

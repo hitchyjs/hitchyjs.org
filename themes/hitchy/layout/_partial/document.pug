@@ -1,18 +1,23 @@
 doctype html
 
+- var bodyClasses = {};
+- bodyClasses.home = is_home();
+- bodyClasses.post = is_post();
+- bodyClasses.archive = is_archive();
+- bodyClasses.page = !is_post() && !is_archive();
+
 html(lang=config.language)
 	head
 		meta(charset="UTF-8")
 		base(href=config.root)
 
-		link(rel="stylesheet" href="https://code.cdn.mozilla.net/fonts/fira.css")
 		link(rel="stylesheet" href="design/index.css")
 		script(type="javascript" src="js/fx.js")
 
 		title
 			block title
 				| #{config.title}
-	body
+	body(class=bodyClasses)
 		#wrapper
 			#north
 				block north-before
@@ -36,4 +41,6 @@ html(lang=config.language)
 			#south
 				block south-before
 				block south
+					.center-block
+						include footer.pug
 				block south-after

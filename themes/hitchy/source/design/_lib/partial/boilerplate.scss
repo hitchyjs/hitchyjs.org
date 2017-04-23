@@ -1,11 +1,28 @@
-.boilerplate {
-	padding: $gap_size;
+body {
+	&.home #north .boilerplate {
+		padding: 2*$gap_size $gap_size;
 
-	h1 {
-		@include font($scale: 4, $weight: 400, $line_height: 1.2);
+		h1 {
+			@include font($scale:4, $weight:$font_weight_bold, $line_height:1.2);
+		}
+
+		h2 {
+			@include font($scale: 1.5);
+		}
 	}
 
-	h2 {
-		@include font($scale: 1.5, $weight: 300);
+	&:not(.home) #north .boilerplate {
+		.site-title {
+			@include font($weight:$font_weight_black, $line_height:$menu_lineheight);
+
+			position: absolute;
+			top: 0;
+			left: -7em;
+		}
+
+		.site-subtitle {
+			display: none;
+		}
 	}
 }
+

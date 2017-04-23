@@ -1,0 +1,7 @@
+ul
+	each target,label in ( site.data.footer || {} )
+		- target = target.replace( /\/($|\?)/, "/index.html$1" ).replace( /^\//, "" );
+		- var classes = {}
+		- classes.selected = is_current( target );
+		li(class=classes).item
+			a(href=target.replace(/(^|\/)index\.html\b/,"$1"))= __("menu."+label)

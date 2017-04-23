@@ -1,0 +1,16 @@
+extends ../_partial/document
+
+block title
+	= page.title + " | " + config.title
+
+block north-before
+	.navigation
+		nav.primary.center-block
+			include ../_partial/top-menu.pug
+			.boilerplate
+				.site-title #{config.title}
+				.site-subtitle #{config.subtitle}
+
+block north
+	.center-block
+		h1= page.title

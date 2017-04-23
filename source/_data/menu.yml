@@ -1,2 +1,6 @@
 home: /
-api: /api
+about: /about/
+quickstart: /getting-started/
+concepts: /concepts/
+api: /api/
+extensions: /extensions/

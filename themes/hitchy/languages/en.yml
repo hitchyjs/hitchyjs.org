@@ -3,3 +3,11 @@ language: en
 menu:
   home: Home
   api: API
+  imprint: Imprint
+  about: About
+  quickstart: Getting Started
+  concepts: Concepts
+  extensions: Extensions
+
+footer:
+  lastUpdatedLabel: "Last Update: %s"

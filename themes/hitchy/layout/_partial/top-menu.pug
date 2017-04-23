@@ -1,8 +1,7 @@
 ul
 	each target,label in ( site.data.menu || {} )
+		- target = target.replace( /\/($|\?)/, "/index.html$1" ).replace( /^\//, "" );
 		- var classes = {}
-		- var url = path.replace( /(^|\/)index\.html(\?.*)?$/, "$1" );
-		- if ( url[0] != "/" ) url = "/" + url;
-		- classes.selected = url.startsWith( target );
+		- classes.selected = is_current( target );
 		li(class=classes).item
-			a(href=target)= __("menu."+label)
+			a(href=target.replace(/(^|\/)index\.html\b/,"$1"))= __("menu."+label)

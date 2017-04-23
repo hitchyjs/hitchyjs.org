@@ -1,0 +1,39 @@
+#south {
+	$gap: 0.5em;
+
+	.center-block {
+		@include font($scale: 0.8);
+
+		text-align: center;
+		padding: $gap_size/2 0;
+
+		.copyright, .timestamp {
+			display: inline-block;
+		}
+
+		.footer {
+			display: inline-block;
+
+			ul {
+				.item {
+					display: inline-block;
+				}
+			}
+		}
+
+		a {
+			display: inline-block;
+			padding: 0 $gap;
+			color: $background_color;
+			text-decoration: none;
+		}
+
+		&.selected a {
+			text-decoration: underline;
+		}
+
+		.timestamp {
+			padding-left: $gap;
+		}
+	}
+}

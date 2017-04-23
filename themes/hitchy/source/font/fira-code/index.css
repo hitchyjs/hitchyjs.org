@@ -5,10 +5,11 @@
          url('woff2/FiraCode-Light.woff2') format('woff2'),
          url('woff/FiraCode-Light.woff') format('woff'),
          url('ttf/FiraCode-Light.ttf') format('truetype');
-    font-weight: 300;
+    font-weight: 400;
     font-style: normal;
 }
 
+/*
 @font-face{
     font-family: 'Fira Code';
     src: url('eot/FiraCode-Regular.eot');
@@ -19,7 +20,9 @@
     font-weight: 400;
     font-style: normal;
 }
+*/
 
+/*
 @font-face{
     font-family: 'Fira Code';
     src: url('eot/FiraCode-Medium.eot');
@@ -30,6 +33,7 @@
     font-weight: 500;
     font-style: normal;
 }
+*/
 
 @font-face{
     font-family: 'Fira Code';
