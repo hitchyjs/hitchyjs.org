@@ -4,7 +4,7 @@
 
 # Site
 title: Hitchy
-subtitle: (web) application framework
+subtitle: a Javascript-based web application framework
 description:
 author: cepharum GmbH
 language: en
@@ -12,7 +12,7 @@ timezone: Europe/Berlin
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
-url: http://hitchyjs.github.io
+url: http://127.0.0.1:4000
 root: /
 permalink: :year/:month/:day/:title/
 permalink_defaults:

@@ -3,7 +3,11 @@ extends ../_partial/document
 block title
 	= page.title + " | " + config.title
 
+block north-before
+	nav.primary
+		include ../_partial/top-menu.pug
+
 block north
-	h1 #{ page.title }
-	nav#topmenu
-		include ../_partial/top-menu
+	.block.boilerplate
+		h1 #{config.title}
+		h2 #{config.subtitle}

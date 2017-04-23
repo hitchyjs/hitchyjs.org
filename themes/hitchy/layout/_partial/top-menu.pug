@@ -1,2 +1,8 @@
-each target,label in site.data.menu
-	a(href=target) #{label}
+ul
+	each target,label in ( site.data.menu || {} )
+		- var classes = {}
+		- var url = path.replace( /(^|\/)index\.html(\?.*)?$/, "$1" );
+		- if ( url[0] != "/" ) url = "/" + url;
+		- classes.selected = url.startsWith( target );
+		li(class=classes).item
+			a(href=target)= __("menu."+label)

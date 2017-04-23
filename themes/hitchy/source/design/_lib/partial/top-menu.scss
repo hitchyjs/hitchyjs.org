@@ -1,0 +1,24 @@
+#north nav.primary {
+	@include font($line_height:2.5);
+	background: $main_darker_color;
+
+	ul {
+		@include centerBlock;
+		padding: 0 $gap_size/2;
+
+		.item {
+			display: inline-block;
+
+			a {
+				display: inline-block;
+				padding: 0 ($gap_size/2);
+				color: $background_color;
+				text-decoration: none;
+			}
+
+			&.selected a {
+				background: $main_color;
+			}
+		}
+	}
+}

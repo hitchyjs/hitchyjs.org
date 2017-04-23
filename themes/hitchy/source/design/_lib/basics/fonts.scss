@@ -1,0 +1,17 @@
+@import "../../../font/fira_code.css";
+
+
+@mixin font( $scale: 1, $size: $font_size, $line_height: 1.5, $weight: 300, $family: $font ) {
+	$actual_font_size: $size * $scale;
+	$actual_lineheight: $actual_font_size * $line_height;
+
+	font: $weight #{$actual_font_size}/#{$actual_lineheight} $font;
+}
+
+body {
+	@include font;
+}
+
+h1 {
+	@include font($scale: 2, $weight: bold);
+}

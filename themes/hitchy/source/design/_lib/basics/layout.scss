@@ -1,0 +1,21 @@
+@mixin centerBlock() {
+	position: relative;
+	box-sizing: border-box;
+	width: $content_width;
+	margin: auto;
+}
+
+
+#north {
+	background: $main_color;
+	color: $background_color;
+}
+
+#north, #main, #south {
+	> .block {
+		@include centerBlock;
+	}
+}
+
+@media screen and (min-width:980px) {
+}

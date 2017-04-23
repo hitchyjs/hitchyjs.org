@@ -3,10 +3,10 @@ doctype html
 html(lang=config.language)
 	head
 		meta(charset="UTF-8")
-		base(href=config.url)
+		base(href=config.root)
 
 		link(rel="stylesheet" href="https://code.cdn.mozilla.net/fonts/fira.css")
-		link(rel=stylesheet href="design/index.css")
+		link(rel="stylesheet" href="design/index.css")
 		script(type="javascript" src="js/fx.js")
 
 		title
@@ -15,18 +15,25 @@ html(lang=config.language)
 	body
 		#wrapper
 			#north
-				.block
-					block north
+				block north-before
+				block north
+				block north-after
 			#main
+				block main-before
 				#core
-					.block
-						block core
+					block core-before
+					block core
+					block core-after
 				#left
-					.block
-						block left
+					block left-before
+					block left
+					block left-after
 				#right
-					.block
-						block right
+					block right-before
+					block right
+					block right-after
+				block main-after
 			#south
-				.block
-					block south
+				block south-before
+				block south
+				block south-after

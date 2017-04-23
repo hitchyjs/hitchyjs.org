@@ -1,0 +1,11 @@
+.boilerplate {
+	padding: $gap_size;
+
+	h1 {
+		@include font($scale: 4, $weight: 400, $line_height: 1.2);
+	}
+
+	h2 {
+		@include font($scale: 1.5, $weight: 300);
+	}
+}
