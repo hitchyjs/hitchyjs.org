@@ -34,6 +34,8 @@ body {
 }
 
 #main {
+	position: relative;
+	overflow: hidden;
 	background: $background_color;
 	color: $text_color;
 }
@@ -43,13 +45,79 @@ body {
 	padding-bottom: 2*$gap_size;
 }
 
+#left, #right {
+	margin: $gap_size $gap_size $gap_size $gap_size;
+}
+
 body:not(.home) .boilerplate {
 	display: none;
 }
 
-@media screen and (min-width:980px) {
+body:not(.with-left) #left {
+	display: none;
+}
+
+body:not(.with-right) #right {
+	display: none;
+}
+
+@media screen and (min-width:768px) {
+	#main article {
+		p, ul, ol {
+			hyphens: auto;
+		}
+	}
+
+	body.columns-2 {
+		.columnizer {
+			@include centerBlock;
+
+			display: flex;
+		}
+
+		&.with-left #left {
+			width: 25%;
+			order: 1;
+			margin-left: 0;
+			padding-top: $font_size * 1.66 * $default_lineheight * 2.5;
+		}
+
+		&.with-right #right {
+			width: 25%;
+			order: 3;
+			margin-right: 0;
+		}
+
+		#core {
+			width: 75%;
+			order: 2;
+		}
+	}
+
 	#main {
 		min-height: 60vh;
+	}
+}
+
+@media screen and (min-width:980px) {
+	#north h1 {
+		white-space: nowrap;
+		text-overflow: ellipsis;
+		overflow: hidden;
+	}
+
+	body.columns-2 {
+		&.with-left #left {
+			width: 20%;
+		}
+
+		&.with-right #right {
+			width: 20%;
+		}
+
+		#core {
+			width: 80%;
+		}
 	}
 }
 

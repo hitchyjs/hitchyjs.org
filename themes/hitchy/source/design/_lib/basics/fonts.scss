@@ -6,7 +6,10 @@ $font_weight_medium: 500;
 $font_weight_bold: 700;
 $font_weight_black: 900;
 
-@mixin font( $scale: 1, $size: $font_size, $line_height: 1.5, $weight: $font_weight_normal, $family: $font ) {
+$default_lineheight: 1.5;
+
+
+@mixin font( $scale: 1, $size: $font_size, $line_height: $default_lineheight, $weight: $font_weight_normal, $family: $font ) {
 	$actual_font_size: $size * $scale;
 	$actual_lineheight: $actual_font_size * $line_height;
 

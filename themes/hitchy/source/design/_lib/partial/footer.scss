@@ -1,6 +1,8 @@
 #south {
 	$gap: 0.5em;
 
+	padding-bottom: $gap_size;
+
 	.center-block {
 		@include font($scale: 0.8);
 

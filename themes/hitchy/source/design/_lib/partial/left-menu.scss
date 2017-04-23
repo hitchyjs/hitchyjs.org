@@ -1,0 +1,54 @@
+#left {
+	@include font;
+	margin: 0;
+	padding: $gap_size;
+	background: $main_color;
+	color: $background_color;
+
+	.sub.navigation {
+		ul {
+			.item {
+				a {
+					position: relative;
+					left: -$gap_size;
+					width: 100%;
+					padding: 0 $gap_size;
+					display: block;
+					color: $background_color;
+					text-decoration: none;
+				}
+
+				&.selected a {
+					color: $background_color;
+					background: $main_darker_color;
+				}
+			}
+		}
+	}
+}
+
+@media screen and (min-width:768px) {
+	#left {
+		margin: $gap_size;
+		padding: 0;
+		background: transparent;
+		color: $text_color;
+
+		.sub.navigation {
+			ul {
+				.item {
+					a {
+						position: static;
+						padding: 0;
+						color: $main_color;
+					}
+
+					&.selected a {
+						color: $main_darker_color;
+						background: transparent;
+					}
+				}
+			}
+		}
+	}
+}

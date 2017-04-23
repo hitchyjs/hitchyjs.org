@@ -8,6 +8,8 @@ menu:
   quickstart: Getting Started
   concepts: Concepts
   extensions: Extensions
+  categories: Categories
+  tags: Tags
 
 footer:
   lastUpdatedLabel: "Last Update: %s"

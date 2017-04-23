@@ -1,0 +1,13 @@
+- var segments = path.split( "/" )
+if segments.length > 1
+	- var prefix = segments.shift() + "/"
+	- var subs = site.pages.data.filter( function( p ) { return p.path.startsWith( prefix ); } )
+	- subs = subs.filter( function( p ) { return !p.hidden && !/(?:^|\/)index\.html(?:\?|$)/.test( p.path ); } )
+	- subs = subs.sort( function( l, r ) { return ( l.sorting || 0 ) - ( r.sorting || 0 ); } )
+	if subs.length > 0
+		nav.sub.navigation
+			ul
+				each sub in subs
+					- var state = { selected: is_current( sub.path ) };
+					li.item(class=state)
+						a(href=sub.path)= titlecase( sub.path.replace( /^(?:.*\/)?(.+?)\.html\b/, "$1" ).replace( /_+/, " " ) )

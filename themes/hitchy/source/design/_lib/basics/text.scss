@@ -1,4 +1,6 @@
 #main {
+	$code_font_size: $font_size * 0.7;
+
 	h1 {
 		@include font($scale: 2, $weight: $font_weight_bold);
 		margin: 1em 0 0.5em;
@@ -19,15 +21,80 @@
 		margin: 1em 0 0.5em;
 	}
 
-	ul, ol {
-		padding-left: 2em;
+	p:not(:first-child), blockquote:not(:first-child),
+	ul:not(:first-child), ol:not(:first-child),
+	table:not(:first-child), form:not(:first-child), figure:not(:first-child) {
+		margin-top: 0.7em;
 	}
 
-	ul li {
-		list-style-type: square;
+	blockquote {
+		margin: 0;
+		padding: $gap_size/2;
+		background: $dark_color;
+		color: $background_color;
+		position: relative;
+		left: -$gap_size/2;
+		width: 100%;
 	}
 
-	ol li {
-		list-style-type: decimal;
+
+	figure {
+		position: relative;
+		overflow: auto;
+		margin-left: -$gap_size/2;
+		margin-right: -$gap_size/2;
+		padding-top: $gap_size/4;
+		padding-bottom: $gap_size/4;
+		background: $dark_soft_color;
+		color: $background_color;
+
+		table {
+			border-collapse: collapse;
+			min-width: 100%;
+
+			.gutter {
+				width: 1px;
+				padding-left: $gap_size/2;
+				padding-right: 1em;
+				text-align: right;
+				opacity: 0.5
+			}
+
+			.code {
+				padding-right: $gap_size/2;
+			}
+		}
+
+		pre {
+			margin-top: 0;
+			margin-bottom: 0;
+			font: normal $code_font_size/#{$code_font_size*$default_lineheight} "Fira Code", monospace;
+		}
+	}
+
+	code {
+		font-family: "Fira Code", monospace;
+		background: $dark_soft_color;
+		color: $background_color;
+		padding: 0 $gap_size/6;
+	}
+
+	strong {
+		font-weight: $font_weight_black;
+	}
+
+
+	#core {
+		ul, ol {
+			padding-left: 2em;
+		}
+
+		ul li {
+			list-style-type: square;
+		}
+
+		ol li {
+			list-style-type: decimal;
+		}
 	}
 }
