@@ -25,3 +25,40 @@
  *
  * @author: cepharum
  */
+
+var domBody = document.getElementsByTagName( "body" )[0];
+var bodyClasses = domBody.classList;
+
+
+
+/*
+ * add mark on body regarding number and constellation of columns actually used
+ * on current page
+ */
+var columns = [], ref;
+
+( ref = document.getElementById( "left" ) ) && ref.firstElementChild && columns.push( "left" );
+( ref = document.getElementById( "right" ) ) && ref.firstElementChild && columns.push( "right" );
+
+bodyClasses.add( "columns-" + ( 1 + columns.length ) );
+columns.forEach( function( name ) {
+	bodyClasses.add( "with-" + name );
+} );
+
+
+
+/*
+ * add mark on body regarding current browser
+ */
+var ua = navigator.userAgent,
+	match;
+
+if ( match = /Firefox\/(\d+)/i.exec( ua ) ) {
+	bodyClasses.add( "gecko", "v" + match[1] );
+} else if ( match = /MSIE\s+(\d+)/i.exec( ua ) ) {
+	bodyClasses.add( "trident", "v" + match[1] );
+} else if ( match = /WebKit/i.exec( ua ) ) {
+	bodyClasses.add( "webkit" );
+}
+
+bodyClasses.add( navigator.platform.toLowerCase() );
