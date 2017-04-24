@@ -1,10 +1,10 @@
 ---
 title: Supported Common Coding Patterns
 date: 2017-04-23 16:51:22
-sorting: 1
+sorting: 2
 ---
 
-### Common Module Pattern
+## Common Module Pattern
 
 In several situations hitchy supports particular pattern for providing additional data and/or functionality. This pattern is available for injecting components into your hitchy setup, for providing custom configuration in your project's configuration related to hitchy and in all models, controllers, policies and services of your project and its extending components.
 
@@ -35,7 +35,7 @@ module.exports = function( options ) {
 By following this pattern access on hitchy's API is provided through closure variable `api` here. This includes all found configuration, any model or controller etc. Thus, when documentation refers to some variable or data available as `api.foo.bar` this is referring to the access granted here. In addition `options` is available to access configuration provided by application or runtime environment injecting hitchy. E.g. on using hitchy's internal server this includes any custom command line option.
 
 
-#### Common Module Function Pattern
+## Common Module Function Pattern
 
 As a derived concept functions might be in compliance with _common module function pattern_ by satisfying these criteria:
 
