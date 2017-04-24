@@ -62,12 +62,6 @@ body:not(.with-right) #right {
 }
 
 @media screen and (min-width:768px) {
-	#main article {
-		p, ul, ol {
-			hyphens: auto;
-		}
-	}
-
 	body.columns-2 {
 		.columnizer {
 			@include centerBlock;

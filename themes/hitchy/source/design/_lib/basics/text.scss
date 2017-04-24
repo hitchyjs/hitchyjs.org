@@ -21,6 +21,12 @@
 		margin: 1em 0 0.5em;
 	}
 
+	article {
+		p, ul, ol {
+			hyphens: auto;
+		}
+	}
+
 	p:not(:first-child), blockquote:not(:first-child),
 	ul:not(:first-child), ol:not(:first-child),
 	table:not(:first-child), form:not(:first-child), figure:not(:first-child) {
