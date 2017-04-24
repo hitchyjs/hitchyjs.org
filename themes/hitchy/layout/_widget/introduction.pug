@@ -1,0 +1,5 @@
+- var intro = site.pages.data.find( function( p ) { return p.introduction; } );
+if intro
+	article.center-block.introduction
+		h3= intro.title
+		.content!= intro.content

@@ -1,0 +1,42 @@
+#wrapper #main .highlights {
+	margin-top: 2*$gap_size;
+	margin-bottom: 2*$gap_size;
+
+	.items {
+		display: flex;
+		padding: 0;
+		margin-left: -$gap_size/2;
+		margin-right: -$gap_size/2;
+
+		.item {
+			display: block;
+			width: 33.33%;
+			flex: 0 0 auto;
+
+			a {
+				display: block;
+				padding: $gap_size/2;
+				text-decoration: none;
+
+				color: $text_color;
+				opacity: 0.7;
+				transition: opacity 0.3s ease, color 0.3s ease;
+
+				&:hover {
+					opacity: 1.0;
+					color: $main_color;
+				}
+			}
+
+			p {
+				text-align: justify;
+				hyphens: auto;
+			}
+
+			h3 {
+				margin: 0;
+				font-size: $font_size*1.3;
+			}
+		}
+	}
+}

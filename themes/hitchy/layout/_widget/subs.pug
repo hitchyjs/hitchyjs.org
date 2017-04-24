@@ -10,4 +10,4 @@ if segments.length > 1
 				each sub in subs
 					- var state = { selected: is_current( sub.path ) };
 					li.item(class=state)
-						a(href=sub.path)= titlecase( sub.path.replace( /^(?:.*\/)?(.+?)\.html\b/, "$1" ).replace( /_+/g, " " ) )
+						a(href=sub.path)= sub.menuitem || titlecase( sub.path.replace( /^(?:.*\/)?(.+?)\.html\b/, "$1" ).replace( /_+/g, " " ) )

@@ -1,0 +1,9 @@
+- var items = site.pages.data.filter( function( p ) { return p.highlight; } );
+if items.length > 0
+	nav.center-block.highlights
+		ul.items
+			each item in items
+				li.item
+					a(href=item.link || item.path)
+						h3.title= item.menuitem || item.title || titlecase( item.path.replace( /^(?:.*\/)?(.+?)\.html\b/, "$1" ).replace( /_+/g, " " ) )
+						.content!= item.content

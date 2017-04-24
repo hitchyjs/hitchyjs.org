@@ -2,6 +2,11 @@
 title: Supported Common Coding Patterns
 date: 2017-04-23 16:51:22
 sorting: 2
+categories:
+- Concepts
+tags:
+- CMP
+- CMFP
 ---
 
 ## Common Module Pattern (CMP)
