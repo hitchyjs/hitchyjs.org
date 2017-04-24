@@ -28,6 +28,8 @@
 	}
 
 	blockquote {
+		position: relative;
+		overflow: auto;
 		margin: 0;
 		padding: $gap_size/2;
 		background: $dark_color;
