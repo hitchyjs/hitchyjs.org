@@ -1,6 +1,7 @@
 ---
 title: Supported Common Coding Patterns
 date: 2017-04-23 16:51:22
+sorting: 1
 ---
 
 ### Common Module Pattern
