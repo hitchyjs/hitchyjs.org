@@ -4,11 +4,17 @@ date: 2017-04-23 16:51:22
 sorting: 2
 ---
 
-## Common Module Pattern
+## Common Module Pattern (CMP)
 
-In several situations hitchy supports particular pattern for providing additional data and/or functionality. This pattern is available for injecting components into your hitchy setup, for providing custom configuration in your project's configuration related to hitchy and in all models, controllers, policies and services of your project and its extending components.
+In several situations hitchy supports particular pattern for providing additional data and/or functionality. This pattern is available 
 
-In either case any such _module_ might provide requested data as such. However, the more beneficial way is to export a single function that is expected to return that requested data. You are advised to stick with the latter technique to gain full access on API and options used to start/inject hitchy. By exporting function component you might even return promise to provide requested data with delay. For example, discovery process or compilation of project's configuration is delayed until some returned promise is resolved with eventually provided information.
+* for injecting components into your hitchy setup, 
+* for providing custom configuration in your project's configuration related to hitchy and 
+* in all models, controllers, policies and services of your project and its extending components.
+
+In either case some module is loaded using `require()`. Any such _module_ might provide requested data as such which is "the common way" of exporting its API. However, the more beneficial way is to export a single function that is expected to return that requested data. 
+
+You are advised to stick with the latter technique to gain full access on API of Hitchy and options used to start it. In addition the module becomes able to return promise for providing requested data with delay. For example, discovery process or compilation of project's configuration is delayed until some returned promise is resolved with eventually provided information.
 
 A short example of hitchy's common module pattern looks like this:
 
@@ -35,7 +41,7 @@ module.exports = function( options ) {
 By following this pattern access on hitchy's API is provided through closure variable `api` here. This includes all found configuration, any model or controller etc. Thus, when documentation refers to some variable or data available as `api.foo.bar` this is referring to the access granted here. In addition `options` is available to access configuration provided by application or runtime environment injecting hitchy. E.g. on using hitchy's internal server this includes any custom command line option.
 
 
-## Common Module Function Pattern
+## Common Module Function Pattern (CMFP)
 
 As a derived concept functions might be in compliance with _common module function pattern_ by satisfying these criteria:
 

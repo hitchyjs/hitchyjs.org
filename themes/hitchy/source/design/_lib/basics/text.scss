@@ -29,6 +29,11 @@
 		a {
 			color: $main_color;
 		}
+
+		em {
+			font-weight: $font_weight_medium;
+			font-style: italic;
+		}
 	}
 
 	p:not(:first-child), blockquote:not(:first-child),
