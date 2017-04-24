@@ -25,6 +25,10 @@
 		p, ul, ol {
 			hyphens: auto;
 		}
+
+		a {
+			color: $main_color;
+		}
 	}
 
 	p:not(:first-child), blockquote:not(:first-child),
@@ -44,9 +48,13 @@
 		padding: $gap_size/2;
 		background: $dark_color;
 		color: $background_color;
-		position: relative;
 		left: -$gap_size/2;
 		width: 100%;
+
+		a {
+			color: $bright_color;
+			text-decoration: underline;
+		}
 	}
 
 
