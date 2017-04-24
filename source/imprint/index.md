@@ -3,7 +3,12 @@ title: Imprint
 date: 2017-04-23 13:14:47
 ---
 
-This website is managed by cepharum GmbH.
+Hitchy is a project of Germany-based [cepharum GmbH](http://cepharum.de).
+
+#### Online
+
+Internet: [cepharum.de](http://cepharum.de)  
+Twitter: [twitter.com/cepharum](https://twitter.com/cepharum)
 
 #### Surface Mail
 

@@ -17,7 +17,7 @@ Every extension may provide one or two separate maps for matching incoming reque
 * **purpose:** 
   * (compile and) provide map of request URL patterns into selection of methods to invoke for filtering requests (_policies_) or for responding (_responders_)
 * **knowledge:**
-  * hitchy's full API incl. core, configuration and elements
+  * Hitchy's full API incl. core, configuration and elements
   * runtime options
   * collected information on current extension (incl. its folder, name, meta information and API)
 * **processing order:** dependency-based

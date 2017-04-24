@@ -1,6 +1,6 @@
 home: /
 about: /about/
-quickstart: /getting-started/
+# quickstart: /getting-started/
 concepts: /concepts/
-api: /api/
+# api: /api/
 extensions: /extensions/

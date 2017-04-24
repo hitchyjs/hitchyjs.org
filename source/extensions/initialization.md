@@ -15,7 +15,7 @@ Every module may provide custom initialization handler e.g. to finally connect t
 * **purpose:** 
   * initialize instance of extension in context of current application runtime (e.g. link to database, etc.)
 * **knowledge:**
-  * hitchy's full API incl. core, configuration and elements
+  * Hitchy's full API incl. core, configuration and elements
   * runtime options
   * collected information on current extension (incl. its folder, name, meta information and API)
 * **processing order:** dependency-based

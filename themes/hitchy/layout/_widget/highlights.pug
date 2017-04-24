@@ -1,5 +1,6 @@
 - var items = site.pages.data.filter( function( p ) { return p.highlight; } );
 if items.length > 0
+	- items = items.sort( function( l, r ) { return ( l.sorting || 0 ) - ( r.sorting || 0 ); } )
 	nav.center-block.highlights
 		ul.items
 			each item in items

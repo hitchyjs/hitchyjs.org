@@ -5,7 +5,7 @@ sorting: 2
 
 ## Finding and Loading Extensions
 
-All extensions get loaded on hitchy's bootstrap. Thus all extensions are loaded prior to handling first request. Any folder in your project's **node_modules** is tested for containing **hitchy.json** file and considered hitchy extension then. This file must be located in root folder of extension and contains the extension's _static meta information_.
+All extensions get loaded on Hitchy's bootstrap. Thus all extensions are loaded prior to handling first request. Any folder in your project's **node_modules** is tested for containing **hitchy.json** file and considered Hitchy extension then. This file must be located in root folder of extension and contains the extension's _static meta information_.
 
 Hitchy is loading any extension by "requiring" its folder. Thus you must provide a main script named **index.js** in root folder of your extension or name any other main script in your extension's **package.json** file.
 
@@ -22,7 +22,7 @@ Here comes a brief profile of _extension loading_:
   * provide _dynamic meta information_ (see section on $meta below)
   * _provide API of extension_
 * **knowledge:** (or _what info is available to the extension_)
-  * hitchy's core API
+  * Hitchy's core API
   * runtime options
   * names of all basically available extensions
   * static meta information (as defined in extension's **hitchy.json** file)
@@ -37,7 +37,7 @@ Every extension is considered to expose information through several properties u
 
 > Any extension may omit some or even all of the properties listed here. This results in certain default behaviour.
 
-Here comes a list of API properties obeyed by hitchy bootstrap process.
+Here comes a list of API properties obeyed by Hitchy bootstrap process.
 
 ### `$meta`
 
@@ -57,7 +57,7 @@ This property is processed on loading extension. It is merged with meta informat
 
 #### On Roles
 
-Extensions are required to fill a certain role, which is simply a name given as string. Roles are important for managing dependencies between extensions. By resolving dependencies hitchy is establishing certain order applied to all further processing involving extensions.
+Extensions are required to fill a certain role, which is simply a name given as string. Roles are important for managing dependencies between extensions. By resolving dependencies Hitchy is establishing certain order applied to all further processing involving extensions.
 
 There are three kinds of roles:
 
@@ -91,7 +91,7 @@ Roles are used to find extensions on resolving dependencies of either extension.
 
 Extensions may list roles of other extensions they rely on. Hitchy is using this definition of dependencies to apply certain order for processing extensions further on. Any extension gets processed after all its dependencies.
 
-Any application relying on hitchy may choose roles filled by extensions as its initial dependencies. This way hitchy does not load all extensions filling a role but those actually required as immediate as well as mediate dependencies of application.
+Any application relying on Hitchy may choose roles filled by extensions as its initial dependencies. This way Hitchy does not load all extensions filling a role but those actually required as immediate as well as mediate dependencies of application.
 
 ### `onDiscovered()`
 
@@ -103,7 +103,7 @@ An extension may expose function to be called after having finished discovery of
 * **purpose:** 
   * save access on replaced extensions e.g. for extending their functionality
 * **knowledge:**
-  * hitchy's core API
+  * Hitchy's core API
   * runtime options
   * roles filled by extensions eventually
   * references on APIs of all previously discovered extensions (including those having lost their role)

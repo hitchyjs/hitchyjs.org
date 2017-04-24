@@ -7,7 +7,7 @@ sorting: 7
 
 This method is expected to implement counterpart to `initialize()` described before.
 
-On properly shutting down hitchy application it first closes all open client connections. After that it shuts down application by notifying all extensions in reverse dependency-based order using this optionally provided API method. Due to reversing order of extension processing any extension that was initialized last on bootstrap gets shut down first now.
+On properly shutting down Hitchy application it first closes all open client connections. After that it shuts down application by notifying all extensions in reverse dependency-based order using this optionally provided API method. Due to reversing order of extension processing any extension that was initialized last on bootstrap gets shut down first now.
 
 #### Profile
 
@@ -15,7 +15,7 @@ On properly shutting down hitchy application it first closes all open client con
 * **purpose:** 
   * release resources requested on initializing extension
 * **knowledge:**
-  * hitchy's full API incl. core, configuration and elements
+  * Hitchy's full API incl. core, configuration and elements
   * runtime options
   * collected information on current extension (incl. its folder, name, meta information and API)
 * **processing order:** reverse dependency-based

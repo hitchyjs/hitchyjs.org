@@ -6,7 +6,7 @@ sorting: 3
 
 ## Meta Data File
 
-Every component needs to provide a file **hitchy.json** in its root folder. This file is used by hitchy to detect this component and expect it to be compatible with its bootstrap process. Contained data is qualified on loading (e.g. to include some default values). It is available via special property `$meta` of components API which in turn is promoted via `api.components`.
+Every component needs to provide a file **hitchy.json** in its root folder. This file is used by Hitchy to detect this component and expect it to be compatible with its bootstrap process. Contained data is qualified on loading (e.g. to include some default values). It is available via special property `$meta` of components API which in turn is promoted via `api.components`.
 
 > **Example:** Component hitchy-foo has meta data file containing this:
 > ```JSON
@@ -32,4 +32,4 @@ This string property explicitly declares the role filled by component. By defaul
 
 ### dependencies
 
-This optional list of strings lists all roles of hitchy components this current component depends on. This list is used to ensure all required components are available. In addition it affects the order of bootstrapping components.
+This optional list of strings lists all roles of Hitchy components this current component depends on. This list is used to ensure all required components are available. In addition it affects the order of bootstrapping components.

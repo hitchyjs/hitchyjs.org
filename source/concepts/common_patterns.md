@@ -11,21 +11,21 @@ tags:
 
 ## Common Module Pattern (CMP)
 
-In several situations hitchy supports particular pattern for providing additional data and/or functionality. This pattern is available 
+In several situations Hitchy supports particular pattern for providing additional data and/or functionality. This pattern is available 
 
-* for injecting components into your hitchy setup, 
-* for providing custom configuration in your project's configuration related to hitchy and 
+* for injecting components into your Hitchy setup, 
+* for providing custom configuration in your project's configuration related to Hitchy and 
 * in all models, controllers, policies and services of your project and its extending components.
 
 In either case some module is loaded using `require()`. Any such _module_ might provide requested data as such which is "the common way" of exporting its API. However, the more beneficial way is to export a single function that is expected to return that requested data. 
 
 You are advised to stick with the latter technique to gain full access on API of Hitchy and options used to start it. In addition the module becomes able to return promise for providing requested data with delay. For example, discovery process or compilation of project's configuration is delayed until some returned promise is resolved with eventually provided information.
 
-A short example of hitchy's common module pattern looks like this:
+A short example of Hitchy's common module pattern looks like this:
 
 ```javascript
 /**
- * Provides implementation for second stage of bootstrapping hitchy instance.
+ * Provides implementation for second stage of bootstrapping Hitchy instance.
  *
  * @this HitchyAPI
  * @param {HitchyOptions} options
@@ -43,7 +43,7 @@ module.exports = function( options ) {
 };
 ```
 
-By following this pattern access on hitchy's API is provided through closure variable `api` here. This includes all found configuration, any model or controller etc. Thus, when documentation refers to some variable or data available as `api.foo.bar` this is referring to the access granted here. In addition `options` is available to access configuration provided by application or runtime environment injecting hitchy. E.g. on using hitchy's internal server this includes any custom command line option.
+By following this pattern access on Hitchy's API is provided through closure variable `api` here. This includes all found configuration, any model or controller etc. Thus, when documentation refers to some variable or data available as `api.foo.bar` this is referring to the access granted here. In addition `options` is available to access configuration provided by application or runtime environment injecting Hitchy. E.g. on using Hitchy's internal server this includes any custom command line option.
 
 
 ## Common Module Function Pattern (CMFP)
