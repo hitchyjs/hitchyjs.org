@@ -68,4 +68,6 @@ theme: hitchy
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
-  type:
+  type: git
+  repo:
+    github: https://github.com/hitchyjs/hitchyjs.github.io
