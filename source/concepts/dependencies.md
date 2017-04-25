@@ -1,6 +1,7 @@
 ---
 title: The Hell of Dependencies
 menuitem: On Dependencies
+sorting: 2
 ---
 
 ## Dependencies Aren't Bad in Itself, But ...

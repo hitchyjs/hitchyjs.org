@@ -1,6 +1,7 @@
 ---
 title: ECMAScript 6
 menuitem: ECMAScript 6
+sorting: 1
 ---
 
 ## Modern Tools Come With Modern Language
@@ -43,7 +44,7 @@ for ( let read = 0; read < length && write < limit; read++ ) {
 result.splice( write, limit - write );
 ```
 
-Both implementations achieve the same result. But the latter does it very fast. And yes, the latter code suffers from readibility thus resulting in hardened maintenance of code. But that's what (proper) unit tests are meant to support.
+Both implementations achieve the same result. But the latter does it very fast. And yes, the latter code suffers from readability thus resulting in hardened maintenance of code. But that's what (proper) unit tests are meant to support.
 
 > ### Anecdote
 >
