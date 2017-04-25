@@ -60,6 +60,10 @@
 			color: $bright_color;
 			text-decoration: underline;
 		}
+
+		h1:first-child, h2:first-child, h3:first-child, h4:first-child, h5:first-child, h6:first-child {
+			margin-top: 0;
+		}
 	}
 
 
@@ -78,6 +82,7 @@
 			min-width: 100%;
 
 			.gutter {
+				vertical-align: top;
 				width: 1px;
 				padding-left: $gap_size/2;
 				padding-right: 1em;
@@ -86,7 +91,12 @@
 			}
 
 			.code {
+				vertical-align: top;
 				padding-right: $gap_size/2;
+
+				div:empty:after {
+					content: " ";
+				}
 			}
 		}
 

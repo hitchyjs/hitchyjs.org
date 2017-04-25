@@ -3,15 +3,12 @@
 	margin-bottom: 2*$gap_size;
 
 	.items {
-		display: flex;
 		padding: 0;
 		margin-left: -$gap_size/2;
 		margin-right: -$gap_size/2;
 
 		.item {
 			display: block;
-			width: 33.33%;
-			flex: 0 0 auto;
 
 			a {
 				display: block;
@@ -36,6 +33,19 @@
 			h3 {
 				margin: 0;
 				font-size: $font_size*1.3;
+			}
+		}
+	}
+}
+
+@media screen and (min-width:768px) {
+	#wrapper #main .highlights {
+		.items {
+			display: flex;
+
+			.item {
+				width: 33.33%;
+				flex: 0 0 auto;
 			}
 		}
 	}

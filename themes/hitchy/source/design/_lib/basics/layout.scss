@@ -41,8 +41,8 @@ body {
 }
 
 #core article {
-	padding-top: $gap_size;
-	padding-bottom: 2*$gap_size;
+	margin-top: $gap_size;
+	margin-bottom: 2*$gap_size;
 }
 
 #left, #right {
