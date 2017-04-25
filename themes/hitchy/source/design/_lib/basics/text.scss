@@ -21,6 +21,11 @@
 		margin: 1em 0 0.5em;
 	}
 
+	h5 {
+		@include font($scale: 1.2, $weight: $font_weight_normal);
+		margin: 1em 0 0.5em;
+	}
+
 	article {
 		p, ul, ol {
 			hyphens: auto;
