@@ -10,6 +10,7 @@ menu:
   extensions: Extensions
   categories: Categories
   tags: Tags
+  runtime: At Runtime
 
 footer:
   lastUpdatedLabel: "Last Update: %s"

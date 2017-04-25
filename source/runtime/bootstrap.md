@@ -62,7 +62,7 @@ Every discovered valid component is loaded then. Either component is expected to
 
 #### Name vs. Role
 
-Every component is having a **name** matching basename of folder containing the component. So, if there is an component in **&lt;projectFolder>/node_modules/hitchy-foo** the component's name is **hitchy-foo**. Names are used to identify components. The name must be unique in a single applicaton relying on Hitchy. It should be even globally unique. During discovery any component gets informed on what other components are about to be loaded. The name is designed to provide opportunity to safely detect availability of a certain component to rely on.
+Every component is having a **name** matching basename of folder containing the component. So, if there is a component in **&lt;projectFolder>/node_modules/hitchy-foo** the component's name is **hitchy-foo**. Names are used to identify components. The name must be unique in a single applicaton relying on Hitchy. It should be even globally unique. During discovery any component gets informed on what other components are about to be loaded. The name is designed to provide opportunity to safely detect availability of a certain component to rely on.
 
 Every component may explicitly declare some **role** it is filling, too. By default a component's role is equivalent to its name. Any component may declare different role in its **hitchy.json** file. Such a declaration is called _static declaration_ of role. On loading component to gather its API this API might include meta information to replace related information read from **hitchy.json** file before. This includes declaration of role. Re-declaring role this way is called _dynamic declaration_ of role.
 

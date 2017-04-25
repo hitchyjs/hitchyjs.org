@@ -3,7 +3,7 @@ title: Ready For Tomorrow
 date: 2017-04-22 23:19:13
 hidden: true
 highlight: true
-link: about/
+link: concepts/es6.html
 sorting: 1
 ---
 

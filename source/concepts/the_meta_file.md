@@ -27,7 +27,7 @@ Of course the file actually contains some information in most cases. Here is a b
 
 ### role
 
-This string property explicitly declares the role filled by component. By default this is derived from basename of folder containing component (and thus this **hitchy.json** file). By explicitly providing role here component might declare to fill certain role different from component's name. This is useful to promote the component for replacing another one.
+This string property explicitly declares the role filled by component. By default this is derived from basename of folder containing component (and thus this **hitchy.json** file). By explicitly providing role here component might declare to fill certain role different from component's name. This is useful to promote the component for [replacing another one](runtime/bootstrap.html#Name-vs-Role).
 
 
 ### dependencies
