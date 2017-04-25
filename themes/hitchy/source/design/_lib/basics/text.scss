@@ -116,6 +116,7 @@
 
 	code {
 		font-family: "Fira Code", monospace;
+		font-size: $font_size * 0.9;
 		background: $dark_soft_color;
 		color: $background_color;
 		padding: 0 $gap_size/6;
@@ -125,6 +126,31 @@
 		font-weight: $font_weight_black;
 	}
 
+	*:not(figure) > table {
+		margin-left: auto;
+		margin-right: auto;
+		position: relative;
+		overflow: auto;
+		border-collapse: collapse;
+
+		th {
+			font-weight: $font_weight_black;
+		}
+
+		th, td {
+			padding: 0.2em 0.5em;
+			vertical-align: top;
+		}
+
+		tbody {
+			tr:nth-child(2n+1) > * {
+				background: transparentize( $dark_color, 0.9 );
+			}
+			tr:nth-child(2n) > * {
+				background: transparentize( $dark_color, 0.99 );
+			}
+		}
+	}
 
 	#core {
 		ul, ol {
