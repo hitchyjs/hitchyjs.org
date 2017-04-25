@@ -49,7 +49,7 @@
 	blockquote {
 		position: relative;
 		overflow: auto;
-		margin: 0;
+		margin: 0 0 0.7em 0;
 		padding: $gap_size/2;
 		background: $dark_color;
 		color: $background_color;
@@ -76,6 +76,13 @@
 		padding-bottom: $gap_size/4;
 		background: $dark_soft_color;
 		color: $background_color;
+
+		figcaption {
+			background: $dark_color;
+			padding: $gap_size/4 $gap_size/2;
+			margin-top: -$gap_size/4;
+			font-weight: $font_weight_bold;
+		}
 
 		table {
 			border-collapse: collapse;
