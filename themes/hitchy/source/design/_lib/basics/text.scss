@@ -94,6 +94,7 @@
 			min-width: 100%;
 
 			.gutter {
+				font: normal $code_font_size/#{$code_font_size*$default_lineheight} "Fira Code", monospace;
 				vertical-align: top;
 				width: 1px;
 				padding-left: $gap_size/2;
@@ -103,6 +104,7 @@
 			}
 
 			.code {
+				font: normal $code_font_size/#{$code_font_size*$default_lineheight} "Fira Code", monospace;
 				vertical-align: top;
 				padding-right: $gap_size/2;
 
