@@ -45,6 +45,12 @@ module.exports = function( options ) {
 
 By following this pattern access on Hitchy's API is provided through closure variable `api` here. This includes all found configuration, any model or controller etc. Thus, when documentation refers to some variable or data available as `api.foo.bar` this is referring to the access granted here. In addition `options` is available to access configuration provided by application or runtime environment injecting Hitchy. E.g. on using Hitchy's internal server this includes any custom command line option.
 
+> **Important Issue:** On bootstrapping Hitchy-based application several libraries and utilities are loaded most of them sticking with this pattern. On complying with this pattern those libraries are copies bound to provided instance of Hitchy API. Because of this loading a library multiple times results in multiple copies of library code.
+>
+> **Solution:** CMP as a pattern is provided to simplify extensibility of Hitchy. This disadvantage can be handled though by using library components loaded on bootstrap and exposed as part of Hitchy's API instance itself. For example, always prefer using `api.utility.file` over `require( "hitchy/lib/utility/file" )` or similar.
+
+> **Note:** On implementing types such as classes CMP must not be used to keep supporting class inheritance and `instanceof` operator. Please separate implementation of such basic types and any code relying on it and make the latter comply with CMP, only!  
+
 
 ## Common Module Function Pattern (CMFP)
 
