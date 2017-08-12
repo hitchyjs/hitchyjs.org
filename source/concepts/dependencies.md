@@ -21,7 +21,7 @@ Do the math! How much time do you spend with creating application, negotiating w
 
 Depending on extensions _usually_ requires invocation of functions provided by those extensions. As illustrated [before](concepts/es6.html) this has a negative impact on performance though this might be less remarkable due to actual use case of an extension.
 
-But do you know all code of every extension your application is going to rely on? Do you know the skills of those who wrote it? Have you checked if any used extension is unnecessarily wasting time with 
+But do you know all code of every extension your application is going to rely on? Do you know the skills of those who wrote it? Have you checked if any used extension is unnecessarily wasting time having a severe impact on your application's performance?
 
 
 ## Conclusion
