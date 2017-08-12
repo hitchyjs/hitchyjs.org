@@ -9,20 +9,20 @@ Hitchy comes with a custom request processing engine. This engine was primarily 
 
 ### Routing Phases
 
-On starting any Hitchy-based application its core is discovering all required extensions resulting in a certain order of processing these extensions at any time involving extensions. This same order is obeyed and combined with further considerations when it comes to sorted processing of routes. For preparing efficient routing during runtime it is obeyed as early as on collecting all routes by reading related configurations included with extensions and combining those with configurations of custom routes of current application itself.
+On starting any Hitchy-based application its core is discovering all required extensions resulting in a certain order of processing these extensions at any time. This same order is obeyed on collecting route configurations of every discovered extension and combining them with each other and with custom routes of current application into common routing lists to be processed on every incoming request.
 
 At first Hitchy is collecting all configurations of routes in groups each related to a single source and sorts those in compliance with order of extensions. These groups are ordered like this:
 
-1. There is a leading group for all custom routes of current application to be processed `early`.
-2. Next there are separate groups per included extension in same order as extensions each containing routes of either extension to be processed `before` some default action.
-3. After that there is another group of custom routes of current application to be processed `before` any default action.
+1. There is a leading group for all custom routes of current application to be processed **early**.
+2. Next there are separate groups per included extension in same order as extensions each containing routes of either extension to be processed **before** some default action.
+3. After that there is another group of custom routes of current application to be processed **before** any default action.
 4. Then there is a group of routes considered implementing any default action. This group is used to contain all routes designated to _blueprint actions_.
 
-All these groups contain configuration of routes commonly preceding or (eventually) representing any default action. Thus they are considered routes of routing phase named `before`. A second set of groups are commonly considered to configure routes of routing phase named `after`:
+All these groups contain configuration of routes commonly preceding or (eventually) representing any default action. Thus they are considered routes of routing phase named **before**. A second set of groups are commonly considered to configure routes of routing phase named **after**:
 
-1. First there is a group for all custom routes of current application to be processed right `after` any default action.
-2. Then there are separate groups per included extension each containing routes of either extension to be processed `after` some default action. This time these groups are sorted in reverse order compared to discovered order of extensions.
-3. Finally there is a group for all custom routes of current application to be processed as `late` as possible.
+1. First there is a group for all custom routes of current application to be processed right **after** any default action.
+2. Then there are separate groups per included extension each containing routes of either extension to be processed **after** some default action. This time these groups are sorted in reverse order compared to discovered order of extensions.
+3. Finally there is a group for all custom routes of current application to be processed as **late** as possible.
 
 > **Note:** By reversing order of extension-related groups in routing phase `after` routes establish proper nesting of extensions' scopes when it comes to request processing. 
 >
@@ -38,10 +38,10 @@ There are two pairs of such ordered groups in every Hitchy application as routes
 
 Finally this results in four lists of groups processed in order like this:
 
-1. policy routes of `before` routing phase
-2. terminal routes of `before` routing phase
-3. terminal routes of `after` routing phase
-4. policy routes of `after` routing phase
+1. policy routes of **before** routing phase
+2. terminal routes of **before** routing phase
+3. terminal routes of **after** routing phase
+4. policy routes of **after** routing phase
 
 > **Note:** Due to checking for terminal routes terminates on first matching route the actual dispatching might be skipping the third list containing terminal routes of `after` routing phase.
 
@@ -81,7 +81,7 @@ This means:
 * On providing an HTTP method it has to precede the provision of path name. It must be separated from the latter using one or more whitespace characters. Thus the `<method>` can't contain any whitespace. And the `[` and `]` aren't meant to be given literally but indicate fact of `<method>` being optional.
 * The path name may be any pattern to be supported by [path-to-regexp](https://www.npmjs.com/package/path-to-regexp) which is intended to support Express-style path name patterns in turn.
 
-If provision of HTTP method is omitted the special method `ALL` is used by default. This special method is requesting to process the route without respect to the request's HTTP method.
+If provision of HTTP method is omitted the special method **ALL** is used by default. This special method is requesting to process the route without respect to the request's HTTP method.
 
 ##### Source as an Object
 
@@ -121,29 +121,93 @@ This way of selecting a target may be merged with properties describing source a
 
 #### Configuring Routes per Extension
 
-Every extension may provide one ore two lists of route configurations in hook `policies` for _policy routing_ and in hook `routes` for _terminal routing_. 
+Extensions describe their individual routing in hooks named `policies`, `routes` and `blueprints`.
 
-* On providing single list in a hook this one is considered to be used in routing phase `before` default action. 
+Providing any of these hooks is optional. Either hook takes a single list of routes to be bound to some default phase. Optionally hooks `policies` and `routes` may use separate lists to explicitly bind routes to one of the supported phases. Route configurations given in hook `policies` are used for _policy routing_ and those given in hooks `routes` and `blueprints` are used for _terminal routing_.
 
-* By providing two lists any extension can provide separate lists for routing phases `before` and `after` default action. In this case lists are provided as properties `before` and `after` of a regular object.
+* On providing single list in a hook this one is considered to be used in routing phase **before** default action.  
+   ```javascript
+   ...
+   routes: {
+       "GET /user/login": "UserController::login",
+       ...	
+   },
+   ...
+   ```
 
-Either list may be given as array, instance of `Map` or regular object as described before.
+* By providing two lists any extension can provide separate lists for routing phases **before** and **after** default action. In this case lists are provided as properties `before` and `after` of a regular object.  
+   ```javascript
+   ...
+   routes: {
+       before: {
+           "GET /user/login": "UserController::login()",
+           ...	
+       },
+       after: {
+           "GET /user/:id": ErrorHandler.userNotFound,
+           ...
+       }
+     }
+   },
+   ...
+   ```
+
+Either list of routes may be given as array, instance of `Map` or regular object as described before. 
+
+In compliance with CMFP either hook itself may be given as function to be invoked for returning the actual data, too. This enables dynamic creation of route configurations. Any such function might return promise to delay provision of route configuration, too. Finally it is also possible to provide a promise instead of function in the first place.
+
+```javascript
+...
+policies: function( options ) {
+    let api = this;
+
+    return Promise.resolve( {
+        before: {
+            "/user/login": "Session::create()",
+            ...
+        },
+        after: [ 
+            {
+                url: "/user/login",
+                controller: "Session",
+                method: "create",
+            },
+            ...
+        ]
+    } );
+},
+routes: function( options ) {
+    let api = this;
+
+    return new Map( [
+        [ "GET /user/login", "UserController::login()" ],
+        ...	
+    ] );
+},
+...
+```
+
+| Hook         | Type of Routes  | Optionally Supported Phases | Default Phase |
+|--------------|-----------------|-----------------------------|---------------|
+| `policies`   | `PolicyRoute`   | before, after               | before        |
+| `routes`     | `TerminalRoute` | before, after               | before        |
+| `blueprints` | `TerminalRoute` | -                           | blueprint     |
 
 #### Configuring Custom Routes of Application
 
 The custom routes of current application must be provided in its configuration under `routes` and `policies` for configuring custom routes for _terminal routing_ and _policy routing_ respectively. 
-
+ 
 Either list of route configurations may be given as array, instance of `Map` or regular object as described before.
 
-#### Declaring Blueprint Routes
-
-TODO
+> An application can't configure custom blueprint routes by intention.
 
 ### Routes At Runtime
 
 On compiling routes from configuration every definition of a route is converted into an instance of class `Route`. By default all _policy routes_ are represented by instances of `PolicyRoute` and all _terminal routes_ are represented by instances of `TerminalRoute`.
 
-> **Note:** Even though it is possible to put instances of `TerminalRoute` into lists included with policy routing and vice versa you are hereby strongly discouraged to use it as this is untested and might result in unintended behaviour of your application. Configurations should stick with describing routes instead of providing readily created instances of `Route`.
+> **Note:** Even though it is possible to put instances of `TerminalRoute` into lists included with policy routing and vice versa you are hereby strongly discouraged to use it as this is untested and might result in unintended behaviour of your application. 
+>
+> Configurations should stick with _describing_ routes instead of providing readily created instances of `Route`.
 
 #### Prepared for Dispatching
 
@@ -161,9 +225,9 @@ Due to this preparation the dispatching of routes becomes pretty performant. Any
 
 As mentioned before this routing is passing 3 or 4 out of 4 phases given before:
 
-1. Any request is passing all _policy routes_ in routing phase `before` covering path name of current request. These routes are considered to filter requests, extending request context for any route processed afterwards.
-2. Next all _terminal routes_ in routing phase `before` are checked for the first one matching path name of current request. If matching route is found here the dispatching is skipping next step.
-3. If no _terminal route_ was matching `before` all _terminal routes in routing phase `after` are checked for the first one matching path name of current request.
+1. Any request is passing all _policy routes_ in routing phase **before** covering path name of current request. These routes are considered to filter requests, extending request context for any route processed afterwards.
+2. Next all _terminal routes_ in routing phase **before** are checked for the first one matching path name of current request. If matching route is found here the dispatching is skipping next step.
+3. If no _terminal route_ was matching **before** all _terminal routes in routing phase **after** are checked for the first one matching path name of current request.
    > In theory these two steps regarding terminal routes might be considered single step, too.
 4. After having checked all _terminal routes_ the list of _policy routes_ in routing phase `after` are checked for covering path name of current request. This happens no matter some matching terminal route has been found before or not. 
    > Since response might be generated before responding in a _policy route_ here isn't good practice unless it's used for providing error pages or similar. You should always check for having response to current request prior to generating response in a late policy route.
