@@ -6,7 +6,8 @@
     "version": "3.3.8"
   },
   "scripts": {
-    "start": "hexo server && open http://localhost:4000/"
+    "start": "hexo server && open http://localhost:4000/",
+    "publish": "hexo -g deploy"
   },
   "description": "documentation of hitchy (web) application framework",
   "dependencies": {
