@@ -7,7 +7,7 @@
   },
   "scripts": {
     "start": "hexo server && open http://localhost:4000/",
-    "publish": "hexo -g deploy"
+    "publish": "hexo deploy -g"
   },
   "description": "documentation of hitchy (web) application framework",
   "dependencies": {
