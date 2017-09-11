@@ -24,7 +24,7 @@ Software may fail. But most failures don't need to kill an application. Expect f
 
 By starting simple but extensible your software won't waste time on things some of its users don't ever require. 
 
-The Hitchy core exists of two major parts. One part takes care of [bootstrapping](runtime/bootstrap.html) to discover in merge all _required_ extensions. The second part routes requests coming from a framework Hitchy was hitched to into handlers of extensions discovered before. Aside from that there are basic tools available for coding extensions more conveniently.
+The Hitchy core exists of two major parts. One part takes care of [bootstrapping](runtime/bootstrap.html) to discover and merge all _required_ extensions. The second part routes requests coming from a framework Hitchy was hitched to into handlers of extensions discovered before. Aside from that there are basic tools available for coding extensions more conveniently.
 
 ### Convention Over Configuration
 
