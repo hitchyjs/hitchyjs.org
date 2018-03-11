@@ -33,4 +33,4 @@ Finally Hitchy is invoking every extension's optionally provided callback **onEx
   * collected information on current extension (incl. its folder, name, meta information and API)
 * **processing order:** dependency-based
 * **supported types:** 
-  * common module function pattern
+  * [common module function pattern](concepts/common_patterns.html#Common-Module-Function-Pattern-CMFP)

@@ -20,4 +20,4 @@ On properly shutting down Hitchy application it first closes all open client con
   * collected information on current extension (incl. its folder, name, meta information and API)
 * **processing order:** reverse dependency-based
 * **supported types:** 
-  * common module function pattern
+  * [common module function pattern](concepts/common_patterns.html#Common-Module-Function-Pattern-CMFP)

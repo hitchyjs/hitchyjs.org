@@ -23,7 +23,7 @@ Every extension may provide one or two separate maps for matching incoming reque
 * **processing order:** dependency-based
 * **supported types:** 
   * object
-  * common module function pattern
+  * [common module function pattern](concepts/common_patterns.html#Common-Module-Function-Pattern-CMFP)
     
 #### Important Note on Routing
 
