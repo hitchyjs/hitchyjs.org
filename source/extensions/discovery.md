@@ -5,7 +5,7 @@ sorting: 2
 
 ## Finding and Loading Extensions
 
-All extensions get loaded on Hitchy's bootstrap. Thus all extensions are loaded prior to handling first request. Any folder in your project's **node_modules** is tested for containing **hitchy.json** file and considered Hitchy extension then. This file must be located in root folder of extension and contains the extension's _static meta information_.
+All extensions get loaded on Hitchy's bootstrap. Thus all extensions are loaded prior to handling first request. Any folder in your project's **node_modules** is tested for containing **[hitchy.json](concepts/the_meta_file.html)** file and considered Hitchy extension then. This file must be located in root folder of extension and contains the extension's _static meta information_.
 
 Hitchy is loading any extension by "requiring" its folder. Thus you must provide a main script named **index.js** in root folder of your extension or name any other main script in your extension's **package.json** file.
 
@@ -25,11 +25,11 @@ Here comes a brief profile of _extension loading_:
   * Hitchy's core API
   * runtime options
   * names of all basically available extensions
-  * static meta information (as defined in extension's **hitchy.json** file)
+  * static meta information (as defined in extension's **[hitchy.json](concepts/the_meta_file.html)** file)
 * **processing order:** arbitrary
 * **supported types:**
   * object
-  * common module pattern
+  * [common module pattern](concepts/common_patterns.html)
 
 ## An Extension's Basic API
 
@@ -39,9 +39,10 @@ Every extension is considered to expose information through several properties u
 
 Here comes a list of API properties obeyed by Hitchy bootstrap process.
 
+
 ### `$meta`
 
-This property is processed on loading extension. It is merged with meta information read from **hitchy.json** file before.
+This property is processed on loading extension. It is merged with meta information read from **[hitchy.json](concepts/the_meta_file.html)** file before.
 
 > $meta is always an object. It can't be function complying with common module function pattern. This doesn't hurt as the API itself may be provided by function on extension complying with common module pattern.
 
@@ -62,7 +63,7 @@ Extensions are required to fill a certain role, which is simply a name given as 
 There are three kinds of roles:
 
 1. Every extension is assigned implicit role on missing any explicit declaration. This implicit role is equivalent to the extension's name which in turn is just the basename of folder containing it.
-2. In **hitchy.json** file role of extension may be declared explicitly as property **role**. 
+2. In **[hitchy.json](concepts/the_meta_file.html)** file role of extension may be declared explicitly as property **role**. 
 3. The extension may provide dynamic meta information including property **role** as well.
 
 While the two former are called _static role_ of extension, the latter is called its _dynamic role_. On processing roles of extensions dynamic role takes precedence over static ones, explicitly declared one over implicit one.
@@ -93,6 +94,7 @@ Extensions may list roles of other extensions they rely on. Hitchy is using this
 
 Any application relying on Hitchy may choose roles filled by extensions as its initial dependencies. This way Hitchy does not load all extensions filling a role but those actually required as immediate as well as mediate dependencies of application.
 
+
 ### `onDiscovered()`
 
 An extension may expose function to be called after having finished discovery of extensions.
@@ -110,4 +112,4 @@ An extension may expose function to be called after having finished discovery of
   * collected information on current extension (incl. its folder, name, meta information and API)
 * **processing order:** dependency-based
 * **supported types:** 
-  * common module function pattern
+  * [common module function pattern](concepts/common_patterns.html#Common-Module-Function-Pattern-CMFP)
