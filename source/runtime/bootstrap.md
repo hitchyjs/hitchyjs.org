@@ -88,11 +88,15 @@ The configuration stage is divided into four steps processed strictly sequential
 
 #### Reading custom configuration
 
-First, all modules immediately located in **&lt;projectFolder>/config** are loaded using required. Either module is expected to describe one part of resulting configuration object. Modules either export configuration object or comply with common module pattern to provide it on request.
+First, all files matching __&lt;projectFolder>/config/*.js__ are loaded. Either file is expected to describe one part of resulting configuration object. Modules either export configuration object or comply with common module pattern to provide it on request.
 
-All results of found modules are compiled into single configuration object using a module's filename without path and extension as property. The resulting configuration is promoted via `api.runtime.config`.
+All results of found modules are merged into single configuration object. This resulting configuration is promoted via `api.runtime.config`.
 
-> Configuration `{custom:"bar"}` provided by module **&lt;projectFolder>/config/foo.js** is available via `api.runtime.config.foo.custom` later.
+Either file's name is ignored in merging configuration. Instead, all objects returned from every loaded file are _deeply merged_. Since configuration is considered to be split into sections those files might need to obey those sections.
+
+> Configuration `{custom:"bar"}` provided by module **&lt;projectFolder>/config/foo.js** is available via `api.runtime.config.custom` later. 
+>
+> To provide routing configuration the same file might need to return object similar to `{routes:{"/":"View.home"}}`.
 
 #### Requesting component to configure
 
