@@ -1,8 +1,8 @@
 home: /
 about: /about/
 download: /download/
-# quickstart: /getting-started/
+quickstart: /getting-started/
 concepts: /concepts/
 runtime: /runtime/
-# api: /api/
 extensions: /extensions/
+# api: /api/
