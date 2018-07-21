@@ -62,7 +62,37 @@ The following examples demonstrate how to control data in your defined model usi
 7. **Search the model:** Open URL http://localhost:3000/api/person/find/firstName/eq/Jane. This time you get a list consisting of the second instance created right before due to matching search criteria `firstName` `eq`uals `Jane`:  
    ![](/images/hitchy-odm-find.png)
 
-8. **Limit the results:** Extend URL used to query model before or the URL used initially to list all records by parameters `offset` and/or `limit` skip some listed records or limit number of resulting records, e.g. http://localhost:3000/api/person?offset=1 or http://localhost:3000/api/person/find/firstName/eq/Jane?limit=1.
+8. **Limit the results:** Extend URL used to query model before or the URL used initially to list all records by parameters `offset` and/or `limit` skip some listed records or limit number of resulting records, e.g. 
+
+   - http://localhost:3000/api/person?offset=1 or
+
+   - http://localhost:3000/api/person/find/firstName/eq/Jane?limit=1.
 
 See the full list of available URLs per model in [documentation of hitchy-plugin-odem-rest](https://www.npmjs.com/package/hitchy-plugin-odem-rest).
 
+
+# Persisting Your Data
+
+Until now all data was backed using a default adapter which happens to use computer's volatile memory thus loosing all data on restarting Hitchy. This is great for testing but it won't help to get become production-ready. You can fix this by configuring different default adapter to be used.
+
+**hitchy-odem** includes `FileAdapter` storing all data in a folder of your file system. This adapter is anything but performant and definitely not suitable for large-scale applications. But it's sufficient to extend your next web application to a production-ready first prototype.
+
+> Keep waiting for an adapter connecting with a LevelDB backend or similar.
+
+1. Create folder **server/data** to contain your data.
+
+2. Create file **server/config/database.js** and put this content:  
+   ```javascript
+   const Path = require( "path" );
+   const { FileAdapter } = require( "hitchy-odem" );
+   
+   module.exports = {
+   	database: {
+   		default: new FileAdapter( {
+   			dataSource: Path.resolve( __dirname, "../data" )
+   		} ),
+   	},
+   };
+   ```
+
+This file is adjusting configuration option **config.database.default** which is read by **hitchy-odem** on selecting default adapter to use with every model created. On next restart Hitchy is going to create all data model instances in created folder.
