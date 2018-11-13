@@ -12,7 +12,7 @@ Hitchy has its own object document manager (ODM) called [odem](https://www.npmjs
 A separate package called [hitchy-plugin-odem-rest](https://www.npmjs.com/package/hitchy-plugin-odem-rest) provides a REST-like API for accessing Hitchy's ODM out of the box. By installing it as dependency the underlying [hitchy-odem](https://www.npmjs.com/package/hitchy-odem) gets installed implicitly as well.
 
 1. Run this command using your CLI while residing in directory containing your base project:  
-   `npm i -S hitchy-plugin-odem-rest`
+   `npm install hitchy-plugin-odem-rest`
 
 2. Create new folder **api/model** inside your Hitchy project (which is the one in subfolder **server** in case of you've been starting off with a VueJS project before).
 

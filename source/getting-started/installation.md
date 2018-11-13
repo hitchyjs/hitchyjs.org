@@ -18,7 +18,7 @@ If you want to develop a web application with Hitchy you could start creating a 
    Answer all questions as desired.
    
 4. Install Hitchy as a dependency:  
-   `npm i -S hitchy`
+   `npm install hitchy`
    
 5. Mark your folder to actually contain some Hitchy application. Put `{}` in a file named **hitchy.json** using your favourite text editor. This file must be located next to **package.json** file created before.
 
@@ -42,7 +42,7 @@ Well, Hitchy wouldn't be called hitchy, if it's not suitable for hitching onto s
 Lets consider you want to start a web application using another super great framework: [VueJS](https://vuejs.org/). You might like to use one their templates to get started:
 
 1. Using your favourite CLI install [@vue/cli](https://www.npmjs.com/package/@vue/cli) globally:  
-   `npm i -g @vue/cli`
+   `npm install -g @vue/cli`
    
 2. Create new project from template using global script **vue** available by now:  
    `vue create myproject`  
@@ -56,7 +56,7 @@ Lets consider you want to start a web application using another super great fram
 5. With your CLI (still) seeing your project's folder **myproject** as its current working directory create a new subfolder named **server**. Of course, you may name it as you prefer. But in steps below this folder is named **server**.
 
 6. Install hitchy as another dependency of your basic project:  
-   `npm i -S hitchy`
+   `npm install hitchy`
    
 7. Put a file named **hitchy.json** into created subfolder **server** with content `{}`. This will properly mark that subfolder to contain a Hitchy-based (sub-)project.
 

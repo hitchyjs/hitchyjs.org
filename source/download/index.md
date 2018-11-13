@@ -8,7 +8,7 @@ date: 2017-04-25 22:46:11
 Hitchy is published via [npm](http://npmjs.org) and so getting it is as easy as running the following command from inside your project's folder:
 
 ```
-npm install --save hitchy
+npm install hitchy
 ```
 
 This will install Hitchy core framework as dependency of your application to be. Since the core doesn't help with what you want it to you probably will have to install extensions to Hitchy as well.
