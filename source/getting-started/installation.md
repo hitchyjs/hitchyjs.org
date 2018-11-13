@@ -150,8 +150,14 @@ When in production setup you probably want to use a similar setup with the VueJS
    ```
    
    The additional option `baseUrl` is set to make sure built files are addressing related files "relative" to document root of Hitchy's server.
+   
+4. Build your application whenever you like:
 
-4. After restarting Hitchy - remember to use environment variable `IP=0.0.0.0` on starting Hitchy so its publicly addressable - you should be able to open your built Hitchy application which is capable of addressing the backend services exposed by Hitchy.
+   ```bash
+   npm run build
+   ```
+
+5. After restarting Hitchy - remember to use environment variable `IP=0.0.0.0` on starting Hitchy so its publicly addressable - you should be able to open your built Hitchy application which is capable of addressing the backend services exposed by Hitchy.
 
    ```bash
    NODE_ENV=production IP=0.0.0.0 npm run server
