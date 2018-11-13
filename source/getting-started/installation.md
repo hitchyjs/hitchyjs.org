@@ -140,7 +140,7 @@ When in production setup you probably want to use a similar setup with the VueJS
    
    Due to security limitations the exposed folder must be part of your Hitchy server's root folder which isn't your project's folder but the one containing the **hitchy.json** file, so it's subfolder **server**.
    
-3. You'd probably want VueJS CLI service to put builds of your VueJS application right into that folder. Create file **vue.config.js** in your project's folder (which isn't **server**) unless this file has been created before. It is exporting your adjustment to VUE CLI service's configuration. The essential property here is `outputDir`.
+3. You'd probably want VueJS CLI service to put builds of your VueJS application right into that folder. Create file **vue.config.js** in your project's folder (which isn't **server**) unless this file has been created before. It is exporting your adjustment to VueJS CLI service's configuration. The essential property here is `outputDir`.
 
    ```javascript
    module.exports = {
