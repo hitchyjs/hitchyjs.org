@@ -109,9 +109,9 @@ One option is to add proper CORS headers provided by Hitchy server. Another opti
 
    > This configuration is providing proxy configuration unless running in a production environment. This is due to be used with _development_ server of VueJS, only. See the next chapter for how to integrate VueJS application in a production setup. 
    
-   The actual configuration is setting up single reverse proxy instance forwarding all requests in scope of URL `/` (NOTE: that don't match any _more specific_ route configured in Hitchy) to the server at http://localhost:8080/ which is the development server of VueJS CLI service.
+   The actual configuration is setting up single reverse proxy instance forwarding all requests in scope of URL `/` (NOTE: unless matching any _more specific_ route configured in Hitchy) to the server at http://localhost:8080/ which is the development server of VueJS CLI service.
    
-3. Restart the Hitchy server. After that your development setup is done. You still need to run the VueJS development server, but instead of using it directly you start your application via Hitchy server instead.
+3. Restart the Hitchy server. After that your development setup is done. You still need to run the VueJS development server, but instead of using that service directly you open your application via Hitchy server instead.
 
 ### Production Setup
 
