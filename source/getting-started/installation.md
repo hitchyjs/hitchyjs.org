@@ -72,6 +72,90 @@ Lets consider you want to start a web application using another super great fram
 9. Start your Hitchy service now:  
    `npm run server`
 
+## Common Pitfall: CORS
+
+### Development Setup
+
+Developing a VueJS application usually involves running a development server of VueJS exposing your application for local testing supporting hot reloading. This is pretty useful but due to using different service your application won't be able to access the Hitchy server set up before due to CORS restrictions applied by your browser.
+
+> When browsing your application via development server on http://localhost:8080 it can't access Hitchy server which is available via http://localhost:3000 due to browser considering both services providing different domains because of different port numbers. This is why CORS will prevent your application served via http://localhost:8080 from accessing service at http://localhost:3000 out of the box.
+
+One option is to add proper CORS headers provided by Hitchy server. Another option is to use a plugin for Hitchy which is providing reverse proxy so you can access your VueJS development server via Hitchy server, thus using same service in same _domain_.
+
+1. When in your project's root folder - which is the one created by VueJS CLI - add the [reverse proxy plugin](https://www.npmjs.com/package/hitchy-plugin-proxy) as a dependency:
+
+   ```bash
+   npm install -D hitchy-plugin-proxy
+   ```
+   
+   This dependency will be discovered by Hitchy due to the way it is started with argument `--extensions .` as configured in step 8 above.
+   
+2. Add folder **server/config** unless created before. This folder is containing Hitchy's configuration in one or more files.
+
+3. Add another configuration file for setting up reverse proxy plugin. The file's name doesn't matter but as a matter of convention you should name it just like the part of configuration it is exporting. In case of the proxy this is `proxy` and so you should name it **server/config/proxy.js**.
+
+   Its content is
+   
+   ```javascript
+   if ( process.env.NODE_ENV !== "production" ) {
+     exports.proxy = [
+       {
+         prefix: "/",
+         target: "http://localhost:8080/",
+       },
+     ];
+   }
+   ```
+
+   > This configuration is providing proxy configuration unless running in a production environment. This is due to be used with _development_ server of VueJS, only. See the next chapter for how to integrate VueJS application in a production setup. 
+   
+   The actual configuration is setting up single reverse proxy instance forwarding all requests in scope of URL `/` (NOTE: that don't match any _more specific_ route configured in Hitchy) to the server at http://localhost:8080/ which is the development server of VueJS CLI service.
+   
+3. Restart the Hitchy server. After that your development setup is done. You still need to run the VueJS development server, but instead of using it directly you start your application via Hitchy server instead.
+
+### Production Setup
+
+When in production setup you probably want to use a similar setup with the VueJS application served via Hitchy server so it won't suffer from CORS limitations as well. In production, a VueJS application isn't served via special server but consists of a set of files to be served by any server you like. So this server should be Hitchy server for sure.
+
+1. Install [another Hitchy plugin](https://www.npmjs.com/package/hitchy-plugin-static) available for exposing files in a certain subfolder of your Hitchy server.
+
+   ```bash
+   npm install hitchy-plugin-static
+   ```
+
+2. This plugin works pretty similar to the proxy plugin installed in chapter before. Create a configuration file **server/config/static.js** containing this:
+
+   ```javascript
+   if ( process.env.NODE_ENV === "production" ) {
+     exports.static = [
+       {
+         prefix: "",
+         folder: "build",
+       },
+     ];
+   }
+   ```
+   
+   This configuration is serving as a counterpart to the proxy's configuration in that it is applied in production mode, only. It is mapping any incoming request to files in folder **server/build** unless matching any more specific route of Hitchy server.
+   
+   Due to security limitations the exposed folder must be part of your Hitchy server's root folder which isn't your project's folder but the one containing the **hitchy.json** file, so it's subfolder **server**.
+   
+3. You'd probably want VueJS CLI service to put builds of your VueJS application right into that folder. Create file **vue.config.js** in your project's folder (which isn't **server**) unless this file has been created before. It is exporting your adjustment to VUE CLI service's configuration. The essential property here is `outputDir`.
+
+   ```javascript
+   module.exports = {
+     outputDir: "server/build",
+     baseUrl: "/",
+   };
+   ```
+   
+   The additional option `baseUrl` is set to make sure built files are addressing related files "relative" to document root of Hitchy's server.
+
+4. After restarting Hitchy - remember to use environment variable `IP=0.0.0.0` on starting Hitchy so its publicly addressable - you should be able to open your built Hitchy application which is capable of addressing the backend services exposed by Hitchy.
+
+   ```bash
+   NODE_ENV=production IP=0.0.0.0 npm run server
+   ```
 
 # See Hitchy In First Action
 
