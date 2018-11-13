@@ -41,12 +41,12 @@ Well, Hitchy wouldn't be called hitchy, if it's not suitable for hitching onto s
 
 Lets consider you want to start a web application using another super great framework: [VueJS](https://vuejs.org/). You might like to use one their templates to get started:
 
-1. Using your favourite CLI install [vue-cli](https://www.npmjs.com/package/vue-cli) globally:  
-   `npm i -g vue-cli`
+1. Using your favourite CLI install [@vue/cli](https://www.npmjs.com/package/@vue/cli) globally:  
+   `npm i -g @vue/cli`
    
 2. Create new project from template using global script **vue** available by now:  
-   `vue init webpack myproject`  
-   Of course, you might choose any other template. Just answer all questions as desired. This will create a new subfolder named **myproject** in your current working directory.
+   `vue create myproject`  
+   This will start a scaffolding process asking some questions. Answer them as desired. This will create a new subfolder named **myproject** in your current working directory.
    
 3. Enter that folder now:  
    `cd myproject`
