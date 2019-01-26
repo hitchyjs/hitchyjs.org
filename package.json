@@ -7,7 +7,9 @@
   },
   "scripts": {
     "start": "hexo server && open http://localhost:4000/",
-    "publish": "hexo deploy -g"
+    "publish": "hexo deploy -g",
+    "vuepress-serve": "vuepress dev vuepress",
+    "vuepress-build": "vuepress build vuepress"
   },
   "description": "documentation of hitchy (web) application framework",
   "dependencies": {
