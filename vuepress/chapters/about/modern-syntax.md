@@ -1,0 +1,5 @@
+# Use Modern Syntax
+
+Except for performance reasons we prefer modern syntax of Javascript. This includes classes, arrow functions, spread operators, structuring and destructuring assignments, generators, async/await etc. Most modern syntax helps writing clean, readable code and tackling errors. When it comes to run Hitchy on an outdated Javascript engine - and you shouldn't do so unless it's really necessary - there are _transpilers_ to help achieving that.
+
+The initial exception is important though and it still applies when using transpilers to replace modern style Javascript with a vintage code style. As of today there are still little to no transformations (we are aware of) to automatically convert callback-style multi-stage array processing into a single-stage processing without any callback invoked. Writing such transformations is a painful job for sure. It is a lot more efficient writing optimized code using old-style iterations than relying on such a transformation. Nevertheless we'd love to have one so our code might become a lot more compact and thus more maintainable.
