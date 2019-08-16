@@ -10,41 +10,5 @@ html(lang=config.language)
 	head
 		meta(charset="UTF-8")
 		base(href=config.root)
-		meta(name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no")
 		meta(http-equiv="refresh" content="0; url=./core")
-
-		link(rel="stylesheet" href="design/index.css")
-
-		title
-			block title
-				| #{config.title}
 	body(class=bodyClasses)
-		#wrapper
-			#north
-				block north-before
-				block north
-				block north-after
-			#main
-				.columnizer
-					block main-before
-					#core
-						block core-before
-						block core
-						block core-after
-					#left
-						block left-before
-						block left
-						block left-after
-					#right
-						block right-before
-						block right
-						block right-after
-					block main-after
-			#south
-				block south-before
-				block south
-					.center-block
-						include footer.pug
-				block south-after
-
-		script(type="text/javascript" src="js/fx.js")
